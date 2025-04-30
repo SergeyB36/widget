@@ -21,3 +21,4 @@ def get_mask_account(account_number: str) -> str:
     return account_number_mask
 
 print('first commit')
+print('second commit')
