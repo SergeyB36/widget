@@ -19,3 +19,5 @@ def get_mask_account(account_number: str) -> str:
     account_number_mask = "**" + account_number[-4:]
 
     return account_number_mask
+
+print('first commit')
