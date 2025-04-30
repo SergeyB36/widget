@@ -1,7 +1,9 @@
+from typing import Any
+
 from masks import get_mask_account, get_mask_card_number
 
 
-def mask_account_card(account_card: str) -> str:
+def mask_account_card(account_card: str) -> Any:
     """
     Функция обработки данных о карте и счете
     """
@@ -14,11 +16,13 @@ def mask_account_card(account_card: str) -> str:
 
     return mask
 
+
 def get_date(date_string: str) -> str:
+    """
+    Функция преобразования формата даты
+    """
     date_need = date_string[:10]
     date_list = []
-    date_list = date_need.split('-')
+    date_list = date_need.split("-")
     sort_date_list = date_list[::-1]
-    return '.'.join(sort_date_list)
-
-print(get_date("2024-03-11T02:26:18.671407"))
+    return ".".join(sort_date_list)
