@@ -1,8 +1,15 @@
-from masks import get_mask_card_number
-from masks import get_mask_account
-def mask_account_card(account_card: str):
-    name, number = account_card.rsplit(' ', 1)
-    if name == 'Счет':
-        return name + ' ' + get_mask_account(number)
+from masks import get_mask_account, get_mask_card_number
+
+
+def mask_account_card(account_card: str) -> str:
+    """
+    Функция обработки данных о карте и счете
+    """
+    name, number = account_card.rsplit(" ", 1)
+    if name == "Счет":
+        mask = name + " " + get_mask_account(number)
+
     else:
-        return name + ' ' + get_mask_card_number(number)
+        mask = name + " " + get_mask_card_number(number)
+
+    return mask
