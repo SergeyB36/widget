@@ -15,7 +15,7 @@ def filter_by_state(filter_list: list[dict], state: str = "EXECUTED") -> list[di
     return new_list_dict
 
 
-def sort_by_date(sort_list: list[dict], sort_key: bool = True) -> list[dict]:
+def sort_by_date(sort_list: list[dict], ascending: bool = True) -> list[dict]:
     """
     Функция принимает список словарей
     и необязательный параметр, задающий порядок сортировки (по умолчанию — убывание).
@@ -24,5 +24,5 @@ def sort_by_date(sort_list: list[dict], sort_key: bool = True) -> list[dict]:
     :param sort_key: параметр сортировки (по умолчанию - по убыванию (True))
     :return: отсортированный по дате список словарей
     """
-    sorted_list = sorted(sort_list, key=lambda sorted_key: sorted_key["date"][:10], reverse=sort_key)
+    sorted_list = sorted(sort_list, key=lambda sorted_key: sorted_key["date"][:10], reverse=not ascending)
     return sorted_list
