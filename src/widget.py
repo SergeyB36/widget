@@ -20,6 +20,7 @@ def mask_account_card(account_card: str) -> Any:
 def get_date(date_string: str) -> str:
     """
     Функция преобразования формата даты
+    :rtype: str
     """
     date_need = date_string[:10]
     date_list = []
