@@ -21,7 +21,7 @@ def sort_by_date(sort_list: list[dict], ascending: bool = True) -> list[dict]:
     и необязательный параметр, задающий порядок сортировки (по умолчанию — убывание).
     Функция возвращает новый список, отсортированный по дате
     :param sort_list:список словарей
-    :return: отсортированный по дате список словарей
+    :return:  список словарей, отсортированный по дате
     """
     sorted_list = sorted(sort_list, key=lambda sorted_key: sorted_key["date"][:10], reverse=not ascending)
     return sorted_list
