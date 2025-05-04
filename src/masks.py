@@ -18,14 +18,14 @@ def get_mask_account(account_number: str) -> str:
     Функция
     маскировки номера банковского номера
     """
-    if not card_number.isdigit():
-        return 'Не верный номер карты'
-    if len(card_number) != 20:
-        return 'Не верный номер карты'
+    if not account_number.isdigit():
+        return 'Не верный номер счета'
+    if len(account_number) != 20:
+        return 'Не верный номер счета'
 
     account_number_mask = "**" + account_number[-4:]
 
     return account_number_mask
 
 
-print(get_mask_card_number('1234 5678 9012 3456'))
+print(get_mask_account('12345678901234561234'))
