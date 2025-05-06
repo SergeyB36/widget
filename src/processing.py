@@ -1,4 +1,7 @@
-def filter_by_state(filter_list: list[dict], state: str = "EXECUTED") -> list[dict]:
+from typing import Any
+
+
+def filter_by_state(filter_list: list[dict], state: str = "EXECUTED") -> Any:
     """
     Функция принимает список словарей
     и опционально значение для ключа state (по умолчанию 'EXECUTED').
@@ -6,13 +9,18 @@ def filter_by_state(filter_list: list[dict], state: str = "EXECUTED") -> list[di
     содержащий только те словари, у которых ключ state соответствует указанному значению
     :param filter_list: список словарей
     :param state: параметр фильтра (по умолчанию 'EXECUTED')
-    :return: отфильтрованный список словарей
+    :return: отфильтрованный список словарей или ошибку при отсутствии заданных значений ключа или самого ключа
     """
-    new_list_dict = []
-    for i_dict in filter_list:
-        if i_dict["state"] == state:
-            new_list_dict.append(i_dict)
-    return new_list_dict
+    try:
+
+        new_list_dict = []
+        for i_dict in filter_list:
+            if i_dict["state"] == state:
+                new_list_dict.append(i_dict)
+        return new_list_dict
+    except KeyError:
+        return 'Ошибка'
+
 
 
 def sort_by_date(sort_list: list[dict], ascending: bool = True) -> list[dict]:
