@@ -3,6 +3,7 @@ import pytest
 from src.masks import get_mask_account, get_mask_card_number
 
 
+# тесты для get_mask_card_number
 @pytest.fixture
 def invalid_card_number() -> list:
     return ["12345678901212", "123456789o121234", "", "123456789012345?", "12345678901234  ", "1234 5678 9012 3456"]
@@ -19,7 +20,7 @@ def valid_card_number() -> list[tuple]:
 
 def test_invalid_mask_card_number(invalid_card_number: list) -> None:
     for number in invalid_card_number:
-        assert get_mask_card_number(number) == "Не верный номер карты"
+        assert get_mask_card_number(number) == 'Ошибка ввода'
 
 
 def test_valid_mask_card_number(valid_card_number: list[tuple]) -> None:
@@ -27,6 +28,7 @@ def test_valid_mask_card_number(valid_card_number: list[tuple]) -> None:
         assert get_mask_card_number(number) == expected
 
 
+# тесты для get_mask_account
 @pytest.fixture
 def invalid_account_number() -> list:
     return [
@@ -46,7 +48,7 @@ def valid_account_number() -> list[tuple]:
 
 def test_invalid_mask_card_account(invalid_account_number: list) -> None:
     for number in invalid_account_number:
-        assert get_mask_account(number) == "Не верный номер счета"
+        assert get_mask_account(number) == 'Ошибка ввода'
 
 
 def test_valid_account_number(valid_account_number: list) -> None:
