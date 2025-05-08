@@ -30,7 +30,6 @@ def filter_by_state(filter_list: list[dict], state: str = "EXECUTED") -> Any:
     return new_list_dict
 
 
-
 def sort_by_date(sort_list: list[dict], ascending: bool = True) -> list[dict]:
     """
     Функция принимает список словарей

@@ -3,7 +3,7 @@ import pytest
 from src.widget import get_date, mask_account_card
 
 
-#Тесты для mask_account_card
+# Тесты для mask_account_card
 @pytest.mark.parametrize(
     "input_data, expected_output",
     [
@@ -17,7 +17,6 @@ def test_mask_account_card(input_data: str, expected_output: str) -> None:
     assert mask_account_card(input_data) == expected_output
 
 
-
 @pytest.fixture
 def invalid_input_data() -> list:
     return [
@@ -27,12 +26,14 @@ def invalid_input_data() -> list:
         "Счет 1234567890123456789",
         "Карта 123456781234567",
     ]
-def test_mask_account_card_invalid(invalid_input_data):
+
+
+def test_mask_account_card_invalid(invalid_input_data: list) -> None:
     for input_data in invalid_input_data:
-        assert mask_account_card(input_data) == 'Ошибка ввода'
+        assert mask_account_card(input_data) == "Ошибка ввода"
 
 
-#Тесты для get_date
+# Тесты для get_date
 @pytest.mark.parametrize(
     "input_date, expected_output",
     [
@@ -59,7 +60,7 @@ def invalid_date_data() -> list:
         "2022-12/31",
         "2022/12-3",
         "2023/10/01",
-        "Ошибка ввода"
+        "Ошибка ввода",
     ]
 
 
