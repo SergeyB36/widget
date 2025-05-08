@@ -8,18 +8,26 @@ def filter_by_state(filter_list: list[dict], state: str = "EXECUTED") -> Any:
     Функция возвращает новый список словарей,
     содержащий только те словари, у которых ключ state соответствует указанному значению
     :param filter_list: список словарей
-    :param state: параметр фильтра (по умолчанию 'EXECUTED')
+    :param state: параметр фильтра (по умолчанию 'EXECUTED', возможно 'CANCELED')
     :return: отфильтрованный список словарей или ошибку при отсутствии заданных значений ключа или самого ключа
     """
-    try:
 
-        new_list_dict = []
-        for i_dict in filter_list:
+    # Создаем список словарей, отфильтрованных по нужному ключу
+    new_list_dict = []
+    # итерируемся по каждому словарю в списке
+    for i_dict in filter_list:
+        # Проверяем наличие ошибки ключа: ключа может не быть,
+        # значение ключа может принимать значения отличные от 'EXECUTED' и 'CANCELED'
+        # или значение ключа может отсутствовать
+        try:
             if i_dict["state"] == state:
                 new_list_dict.append(i_dict)
-        return new_list_dict
-    except KeyError:
-        return 'Ошибка'
+        # Если возникает ошибка, то такой словарь мы пропускаем
+        except KeyError:
+            continue
+    # Возвращает список только из словарей, в которых значение ключа 'state'
+    # принимает значения только 'EXECUTED' и 'CANCELED'
+    return new_list_dict
 
 
 
