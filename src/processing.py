@@ -31,5 +31,5 @@ def sort_by_date(sort_list: list[dict], ascending: bool = True) -> list[dict]:
     :param sort_list:список словарей
     :return: отсортированный по дате список словарей
     """
-    sorted_list = sorted(sort_list, key=lambda sorted_key: sorted_key["date"][:10], reverse=not ascending)
+    sorted_list = sorted(sort_list, key=lambda sorted_key: sorted_key["date"], reverse=not ascending)
     return sorted_list
