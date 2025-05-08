@@ -3,6 +3,7 @@ def get_mask_card_number(card_number: str) -> str:
     Функция
     маскировки номера банковской карты
     """
+    # проверяем что номер состоит только из цифр и его длина равна 16. Иначе возвращаем ошибку.
     if not card_number.isdigit():
         return "Ошибка ввода"
     if len(card_number) != 16:
@@ -18,6 +19,7 @@ def get_mask_account(account_number: str) -> str:
     Функция
     маскировки номера банковского номера
     """
+    # проверяем что номер состоит только из цифр и его длина равна 20. Иначе возвращаем ошибку.
     if not account_number.isdigit():
         return "Ошибка ввода"
     if len(account_number) != 20:
