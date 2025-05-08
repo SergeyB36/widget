@@ -29,9 +29,6 @@ def mask_account_card(account_card: str) -> str:
         elif " " in name:
             if "".join(name.split()).isalpha():
                 return name + " " + get_mask_card_number(number)
-        # вывод ошибки если название карты некорректно
-        else:
-            return "Ошибка ввода"
     # если обработка все-таки не произошла
     return "Ошибка ввода"
 
@@ -45,16 +42,12 @@ def get_date(date_string: str) -> str:
     if len(date_string) < 10:
         return "Ошибка ввода"
     date_need = date_string[:10]
-    if not date_need[-1].isdigit():
-        date_need = date_string[:9]
-    date_list = date_need.split("-")
-    if len(date_list[0]) != 4 or len(date_list[1]) > 2 or len(date_list[2]) > 2:
-        return "Ошибка ввода"
     # Проверка наличия в структуре данных нужного количества разделителей
     if date_need.count("-") != 2:
         return "Ошибка ввода"
-    # Проверка наличия в структуре данных трех элементов
-    if len(date_list) != 3:
+    date_list = date_need.split("-")
+    # Проверка наличия в структуре данных трех элементов их длину
+    if len(date_list[0]) != 4 or len(date_list[1]) != 2 or len(date_list[2]) != 2:
         return "Ошибка ввода"
     # Проверка наличия в структуре данных только цифр
     for number in date_list:
