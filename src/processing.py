@@ -1,17 +1,32 @@
-def filter_by_state(filter_list: list[dict], state: str = "EXECUTED") -> list[dict]:
+from typing import Any
+
+
+def filter_by_state(filter_list: list[dict], state: str = "EXECUTED") -> Any:
     """
     Функция принимает список словарей
     и опционально значение для ключа state (по умолчанию 'EXECUTED').
     Функция возвращает новый список словарей,
     содержащий только те словари, у которых ключ state соответствует указанному значению
     :param filter_list: список словарей
-    :param state: параметр фильтра (по умолчанию 'EXECUTED')
-    :return: отфильтрованный список словарей
+    :param state: параметр фильтра (по умолчанию 'EXECUTED', возможно 'CANCELED')
+    :return: отфильтрованный список словарей или ошибку при отсутствии заданных значений ключа или самого ключа
     """
+
+    # Создаем список словарей, отфильтрованных по нужному ключу
     new_list_dict = []
+    # итерируемся по каждому словарю в списке
     for i_dict in filter_list:
-        if i_dict["state"] == state:
-            new_list_dict.append(i_dict)
+        # Проверяем наличие ошибки ключа: ключа может не быть,
+        # значение ключа может принимать значения отличные от 'EXECUTED' и 'CANCELED'
+        # или значение ключа может отсутствовать
+        try:
+            if i_dict["state"] == state:
+                new_list_dict.append(i_dict)
+        # Если возникает ошибка, то такой словарь мы пропускаем
+        except KeyError:
+            continue
+    # Возвращает список только из словарей, в которых значение ключа 'state'
+    # принимает значения только 'EXECUTED' и 'CANCELED'
     return new_list_dict
 
 
@@ -23,5 +38,5 @@ def sort_by_date(sort_list: list[dict], ascending: bool = True) -> list[dict]:
     :param sort_list:список словарей
     :return: отсортированный по дате список словарей
     """
-    sorted_list = sorted(sort_list, key=lambda sorted_key: sorted_key["date"][:10], reverse=not ascending)
+    sorted_list = sorted(sort_list, key=lambda sorted_key: sorted_key["date"], reverse=not ascending)
     return sorted_list
